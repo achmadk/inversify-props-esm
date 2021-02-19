@@ -9,6 +9,7 @@
       "import": "./dist/inversify-props-esm.esm.js"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
