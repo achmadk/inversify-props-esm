@@ -9,7 +9,7 @@ import {
 } from './parameters.helper';
 
 export function injectable() {
-  return function(constructor: Constructor) {
+  return function (constructor: Constructor) {
     return __injectable()(constructor);
   };
 }
@@ -96,17 +96,6 @@ function injectPropertyDecorator(
   if (descriptor) {
     log(debug, 'has descriptor', descriptor);
     descriptor.get = () => getContainer().get(id);
-  } else {
-    log(debug, 'Using Reflect defineProperty will be deprecated soon, use ES6');
-    Reflect.deleteProperty(target, methodName);
-    Reflect.defineProperty(target, methodName, {
-      get() {
-        return getContainer().get(id);
-      },
-      set(value) {
-        return value;
-      },
-    });
   }
 
   return __inject(id)(target, methodName);

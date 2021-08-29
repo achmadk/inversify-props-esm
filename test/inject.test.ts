@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { cid, container } from '../src';
 import { resetContainer } from '../src/lib/container';
 import { inject, isParameterDecorator } from '../src/lib/inject.helper';
@@ -9,9 +7,7 @@ describe('Inject Helper', () => {
     test('should be detected as parameter decorator if index is a number', () => {
       expect(isParameterDecorator(0)).toBe(true);
       expect(isParameterDecorator(1)).toBe(true);
-      expect(isParameterDecorator((undefined as unknown) as number)).toBe(
-        false
-      );
+      expect(isParameterDecorator(undefined as unknown as number)).toBe(false);
     });
   });
 

@@ -17,7 +17,10 @@ function decorateCatchable(
   try {
     decorate(decorator, constructor, parameterIndex);
   } catch (e) {
-    if (e.message !== 'Cannot apply @injectable decorator multiple times.') {
+    if (
+      e instanceof Error &&
+      e.message !== 'Cannot apply @injectable decorator multiple times.'
+    ) {
       throw e;
     }
   }
@@ -45,10 +48,7 @@ export class Container extends InversifyContainer {
     const id = generateIdAndAddToCache(constructor, customId);
     decorateCatchable(injectable(), constructor);
 
-    return super
-      .bind<T>(id)
-      .to(constructor)
-      .inTransientScope();
+    return super.bind<T>(id).to(constructor).inTransientScope();
   }
 
   public addSingleton<T>(
@@ -58,10 +58,7 @@ export class Container extends InversifyContainer {
     const id = generateIdAndAddToCache(constructor, customId);
     decorateCatchable(injectable(), constructor);
 
-    return super
-      .bind<T>(id)
-      .to(constructor)
-      .inSingletonScope();
+    return super.bind<T>(id).to(constructor).inSingletonScope();
   }
 
   public addRequest<T>(
@@ -71,10 +68,7 @@ export class Container extends InversifyContainer {
     const id = generateIdAndAddToCache(constructor, customId);
     decorateCatchable(injectable(), constructor);
 
-    return super
-      .bind<T>(id)
-      .to(constructor)
-      .inRequestScope();
+    return super.bind<T>(id).to(constructor).inRequestScope();
   }
 
   public get<T>(serviceIdentifier: Id): T {

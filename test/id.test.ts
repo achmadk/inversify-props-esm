@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import {
   addIdToCache,
   generateIdName,
@@ -44,7 +42,7 @@ describe('Id Helper', () => {
 
       class Dummy implements IDummy {}
 
-      const id = (null as unknown) as string;
+      const id = null as unknown as string;
 
       const generatedId = generateIdOfDependency<IDummy>(Dummy, id);
 
