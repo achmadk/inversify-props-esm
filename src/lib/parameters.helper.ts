@@ -29,8 +29,8 @@ export function convertStringParametersToList(
 ): string[] {
   return stringParameters
     .split(',')
-    .map(arg => arg.replace(/\/\*.*\*\//, '').trim())
-    .filter(x => x);
+    .map((arg) => arg.replace(/\/\*.*\*\//, '').trim())
+    .filter((x) => x);
 }
 
 export function cleanParameter(parameter: string): string {

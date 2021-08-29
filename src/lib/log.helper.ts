@@ -7,5 +7,6 @@ export function log(debug = false, ...messages: any[]): void {
     return;
   }
 
+  // @ts-ignore
   console.log(...messages);
 }
